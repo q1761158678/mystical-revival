@@ -1,0 +1,10 @@
+node_modules/
+data.db
+data.db-*
+cloudflared.exe
+cloudflared.exe.*
+*.tgz
+npm-debug.log
+
+PortableGit/
+PortableGit.exe
