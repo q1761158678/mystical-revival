@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>驭诡者注册 — 神秘复苏·总部</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span class="logo-icon">诡</span>
+    <span>神秘复苏·总部</span>
+  </div>
+  <button class="nav-toggle">☰</button>
+  <ul class="navbar-nav">
+    <li><a href="index.html">总部</a></li>
+    <li><a href="events.html">事件档案</a></li>
+    <li><a href="roster.html">驭诡者名册</a></li>
+    <li><a href="levels.html">诡异等级</a></li>
+    <li><a href="forum.html">论坛</a></li>
+    <li><a href="chat.html">聊天</a></li>
+    <li><a href="register.html">注册</a></li>
+  </ul>
+</nav>
+
+<div class="main-container" style="max-width: 800px;">
+
+  <div class="hero">
+    <div class="hero-classified">★ 驭诡者招募 · 限名额 ★</div>
+    <h1>驭诡者<span class="accent">注册</span></h1>
+    <p class="hero-subtitle">GHOST CONTROLLER REGISTRATION</p>
+  </div>
+
+  <div class="alert-box">
+    <strong>⚠ 风险告知：</strong>驭诡者注册是不可逆的过程。注册后，您将被随机分配一只已收容的厉鬼并建立驾驭连接。此过程存在风险，包括但不限于：精神受损、身体异常、能力失控。请确认您已充分了解风险后再进行注册。
+  </div>
+
+  <!-- ==================== 登录区域 ==================== -->
+  <div class="card" id="login-section">
+    <div class="card-header">
+      <span class="file-id">AUTH-LOGIN</span>
+      <h2>驭诡者登录</h2>
+    </div>
+    <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 20px;">已是注册驭诡者？请输入账号密码登录。</p>
+    <div class="form-group">
+      <label>账号 / Account</label>
+      <input type="text" id="login-account" placeholder="请输入账号" maxlength="20">
+    </div>
+    <div class="form-group">
+      <label>密码 / Password</label>
+      <input type="password" id="login-password" placeholder="请输入密码" maxlength="32">
+    </div>
+    <button class="btn btn-large btn-full" onclick="doLogin()">登录</button>
+    <p style="text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-dim);">
+      尚未注册？<a href="#" onclick="showRegisterForm(); return false;" style="color: var(--accent-red);">前往注册</a>
+    </p>
+  </div>
+
+  <!-- ==================== 注册表单 ==================== -->
+  <div class="card" id="register-form-section" style="display: none;">
+    <div class="card-header">
+      <span class="file-id">FORM-GC-REG</span>
+      <h2>驭诡者申请表</h2>
+    </div>
+
+    <div class="form-group">
+      <label>账号 / Account</label>
+      <input type="text" id="reg-account" placeholder="设置登录账号（3-20位字母/数字/下划线）" maxlength="20">
+    </div>
+
+    <div class="form-group">
+      <label>密码 / Password</label>
+      <input type="password" id="reg-password" placeholder="设置登录密码（6-32位）" maxlength="32">
+    </div>
+
+    <div class="form-group">
+      <label>确认密码 / Confirm Password</label>
+      <input type="password" id="reg-password2" placeholder="再次输入密码" maxlength="32">
+    </div>
+
+    <div class="form-group">
+      <label>代号 / Codename</label>
+      <input type="text" id="reg-codename" placeholder="给自己取一个代号（选填，留空将自动分配）" maxlength="10">
+    </div>
+
+    <div class="form-group">
+      <label>性别 / Gender</label>
+      <select id="reg-gender">
+        <option value="男">男</option>
+        <option value="女">女</option>
+        <option value="未知">不愿透露</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>所属分部 / Branch</label>
+      <select id="reg-branch">
+        <option value="华北分部">华北分部</option>
+        <option value="华东分部">华东分部</option>
+        <option value="华南分部">华南分部</option>
+        <option value="华中分部">华中分部</option>
+        <option value="西南分部">西南分部</option>
+        <option value="西北分部">西北分部</option>
+        <option value="东北分部">东北分部</option>
+      </select>
+    </div>
+
+    <div class="alert-box alert-warn">
+      <strong>确认：</strong>我已阅读并理解上述风险告知，自愿申请成为驭诡者。
+    </div>
+
+    <button class="btn btn-large btn-full" id="submit-btn" onclick="submitRegistration()">确认注册 · 驾驭厉鬼</button>
+    <p style="text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-dim);">
+      已有账号？<a href="#" onclick="showLoginForm(); return false;" style="color: var(--accent-red);">返回登录</a>
+    </p>
+  </div>
+
+  <!-- ==================== 证书展示区 ==================== -->
+  <div id="certificate-section" style="display: none;">
+    <!-- 由 register.js 动态填充 -->
+  </div>
+
+  <!-- ==================== 已登录用户区域 ==================== -->
+  <div class="card" id="logged-in-section" style="display: none;">
+    <div class="card-header">
+      <span class="file-id">STATUS-ONLINE</span>
+      <h2>驭诡者在线</h2>
+      <span class="file-tag tag-active">已登录</span>
+    </div>
+    <div id="logged-in-info" style="margin-bottom: 16px;"></div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <button class="btn" onclick="showCertificate()">查看证书</button>
+      <button class="btn" onclick="doLogout()">退出登录</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>诡异事务总部 · 内部系统 v3.14.159</p>
+  <p>© 2026 SUPERNATURAL CONTAINMENT HEADQUARTERS. ALL RIGHTS RESERVED.</p>
+  <p class="footer-warning">★ 本系统受《诡异事务管理法》保护 · 未经授权访问将被追究法律责任 ★</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

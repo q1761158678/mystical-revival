@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>驭诡者论坛 — 神秘复苏·总部</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span class="logo-icon">诡</span>
+    <span>神秘复苏·总部</span>
+  </div>
+  <button class="nav-toggle">☰</button>
+  <ul class="navbar-nav">
+    <li><a href="index.html">总部</a></li>
+    <li><a href="events.html">事件档案</a></li>
+    <li><a href="roster.html">驭诡者名册</a></li>
+    <li><a href="levels.html">诡异等级</a></li>
+    <li><a href="forum.html">论坛</a></li>
+    <li><a href="chat.html">聊天</a></li>
+    <li><a href="register.html">注册</a></li>
+  </ul>
+</nav>
+
+<div class="main-container">
+
+  <div class="hero">
+    <div class="hero-classified">★ 内部交流 · 驭诡者专用 ★</div>
+    <h1>驭诡者<span class="accent">论坛</span></h1>
+    <p class="hero-subtitle">GHOST CONTROLLER FORUM</p>
+  </div>
+
+  <!-- ==================== 未登录：访问拦截 ==================== -->
+  <div class="card" id="access-denied-section" style="display: none; text-align: center; padding: 48px;">
+    <div style="font-size: 48px; margin-bottom: 16px;">🔒</div>
+    <h2 style="color: var(--accent-red); font-size: 22px; letter-spacing: 3px; margin-bottom: 12px;">访问受限</h2>
+    <p style="color: var(--text-main); font-size: 15px; margin-bottom: 8px;">本论坛仅限已注册驭诡者访问。</p>
+    <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 28px;">您当前尚未登录，请先注册并登录后进入论坛。</p>
+    <a href="register.html" class="btn btn-large">前往注册 / 登录</a>
+  </div>
+
+  <!-- ==================== 已登录：论坛内容 ==================== -->
+  <div id="forum-content" style="display: none;">
+
+    <!-- 用户状态 -->
+    <div class="card" id="user-status-card" style="padding: 16px 24px;">
+      <div id="user-info" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;"></div>
+    </div>
+
+    <div class="alert-box alert-warn">
+      <strong>论坛规则：</strong>禁止在论坛中泄露S级及以上事件的详细信息。禁止公开讨论具体收容措施。禁止发布可能引起恐慌的内容。违规者将被内部监察部追责。
+    </div>
+
+    <!-- 发帖区 -->
+    <div class="card" id="post-form-card">
+      <div class="card-header">
+        <span class="file-id">FORUM-POST</span>
+        <h2>发布帖子</h2>
+      </div>
+      <div id="post-form">
+        <div class="form-group">
+          <label>标题</label>
+          <input type="text" id="post-title" placeholder="请输入帖子标题" maxlength="50">
+        </div>
+        <div class="form-group">
+          <label>内容</label>
+          <textarea id="post-content" placeholder="分享你的任务经验、诡异现象讨论、驭诡技巧交流..." maxlength="2000"></textarea>
+        </div>
+        <button class="btn btn-full" onclick="submitPost()">发布帖子</button>
+      </div>
+    </div>
+
+    <!-- 帖子列表 -->
+    <div style="margin-top: 32px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <h2 style="font-size: 18px; color: var(--text-bright); letter-spacing: 2px;">最新帖子</h2>
+        <span id="post-count" style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);"></span>
+      </div>
+      <div id="post-list"></div>
+      <div id="empty-state" style="text-align: center; padding: 40px; color: var(--text-dim); font-size: 14px; display: none;">
+        暂无帖子，成为第一个发帖的人吧
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>诡异事务总部 · 内部系统 v3.14.159</p>
+  <p>© 2026 SUPERNATURAL CONTAINMENT HEADQUARTERS. ALL RIGHTS RESERVED.</p>
+  <p class="footer-warning">★ 本系统受《诡异事务管理法》保护 · 未经授权访问将被追究法律责任 ★</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script src="js/forum.js"></script>
+</body>
+</html>

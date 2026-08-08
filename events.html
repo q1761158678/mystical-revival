@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>诡异事件档案 — 神秘复苏·总部</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span class="logo-icon">诡</span>
+    <span>神秘复苏·总部</span>
+  </div>
+  <button class="nav-toggle">☰</button>
+  <ul class="navbar-nav">
+    <li><a href="index.html">总部</a></li>
+    <li><a href="events.html">事件档案</a></li>
+    <li><a href="roster.html">驭诡者名册</a></li>
+    <li><a href="levels.html">诡异等级</a></li>
+    <li><a href="forum.html">论坛</a></li>
+    <li><a href="chat.html">聊天</a></li>
+    <li><a href="register.html">注册</a></li>
+  </ul>
+</nav>
+
+<div class="main-container">
+
+  <div class="hero">
+    <div class="hero-classified">★ 机密档案 · 限制访问 ★</div>
+    <h1>诡异事件<span class="accent">档案</span></h1>
+    <p class="hero-subtitle">SUPERNATURAL INCIDENT ARCHIVE</p>
+  </div>
+
+  <div class="alert-box">
+    <strong>⚠ 注意：</strong>以下档案内容可能引起心理不适。非驭诡者人员请在陪同下阅读。档案中涉及具体收容措施的部分已用 ███ 遮蔽。
+  </div>
+
+  <!-- 未登录拦截 -->
+  <div class="card" id="access-denied-section" style="display: none; text-align: center; padding: 48px;">
+    <div style="font-size: 48px; margin-bottom: 16px;">🔒</div>
+    <h2 style="color: var(--accent-red); font-size: 22px; letter-spacing: 3px; margin-bottom: 12px;">访问受限</h2>
+    <p style="color: var(--text-main); font-size: 15px; margin-bottom: 8px;">事件档案仅限已注册驭诡者访问。</p>
+    <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 28px;">请先注册并登录后查阅档案。</p>
+    <a href="register.html" class="btn btn-large">前往注册 / 登录</a>
+  </div>
+
+  <div id="events-content" style="display: none;">
+
+  <!-- 用户状态条 -->
+  <div class="card" style="padding: 16px 24px;" id="user-bar">
+    <div id="user-info-bar" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;"></div>
+  </div>
+
+  <!-- 筛选 -->
+  <div class="card" style="padding: 16px 24px;">
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 2px;">筛选等级：</span>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterEvents('all')">全部</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterEvents('S')">S级</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterEvents('A')">A级</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterEvents('B')">B级</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterEvents('C')">C级</button>
+    </div>
+  </div>
+
+  <!-- ==================== 发布/编辑档案表单 ==================== -->
+  <div class="card" id="event-form-section" style="display: none;">
+    <div class="card-header">
+      <span class="file-id" id="event-form-mode">发布新档案</span>
+      <h2 id="event-form-title">发布事件档案</h2>
+    </div>
+    <input type="hidden" id="event-edit-id" value="">
+    <div class="grid-2">
+      <div class="form-group">
+        <label>事件标题</label>
+        <input type="text" id="ev-title" placeholder="如：黄冈村诡域事件" maxlength="40">
+      </div>
+      <div class="form-group">
+        <label>档案编号</label>
+        <input type="text" id="ev-fileid" placeholder="如：EV-2026-0817（选填，留空自动生成）" maxlength="20">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="form-group">
+        <label>危险等级</label>
+        <select id="ev-level">
+          <option value="S">S级 · 灭世级</option>
+          <option value="A">A级 · 危险级</option>
+          <option value="B" selected>B级 · 警戒级</option>
+          <option value="C">C级 · 关注级</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>处理状态</label>
+        <select id="ev-status">
+          <option value="收容中">收容中</option>
+          <option value="处理中" selected>处理中</option>
+          <option value="已收容">已收容</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="form-group">
+        <label>发生地点</label>
+        <input type="text" id="ev-location" placeholder="如：██省黄冈村" maxlength="40">
+      </div>
+      <div class="form-group">
+        <label>发现时间</label>
+        <input type="text" id="ev-date" placeholder="如：2026-07-14" maxlength="20">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="form-group">
+        <label>伤亡人数</label>
+        <input type="text" id="ev-casualties" placeholder="如：3人遇难 / 2人失踪" maxlength="30">
+      </div>
+      <div class="form-group">
+        <label>诡异类型</label>
+        <input type="text" id="ev-type" placeholder="如：诡域 · 封闭型" maxlength="30">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>事件详情</label>
+      <textarea id="ev-description" placeholder="详细描述事件经过、已采取的收容措施、参与驭诡者等..." maxlength="2000" style="min-height:160px;"></textarea>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn" onclick="saveEvent()">确认发布</button>
+      <button class="btn" onclick="cancelEventForm()">取消</button>
+    </div>
+  </div>
+
+  <!-- ==================== 发布按钮（已登录显示） ==================== -->
+  <div id="publish-btn-section" style="text-align: center; margin-bottom: 24px; display: none;">
+    <button class="btn btn-large" onclick="showEventForm()">＋ 发布新档案</button>
+  </div>
+
+  <!-- ==================== 事件档案列表 ==================== -->
+  <div id="event-list">  </div>
+
+  <!-- 分页提示 -->
+  <div style="text-align: center; margin: 32px 0; font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">
+    <span id="event-count-text">显示 0 / 847 条档案</span> &nbsp;|&nbsp; 更高级别档案需要提升权限等级
+  </div>
+
+  </div><!-- /events-content -->
+
+</div>
+
+<footer class="footer">
+  <p>诡异事务总部 · 内部系统 v3.14.159</p>
+  <p>© 2026 SUPERNATURAL CONTAINMENT HEADQUARTERS. ALL RIGHTS RESERVED.</p>
+  <p class="footer-warning">★ 本系统受《诡异事务管理法》保护 · 未经授权访问将被追究法律责任 ★</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script src="js/events.js"></script>
+</body>
+</html>

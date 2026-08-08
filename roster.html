@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>驭诡者名册 — 神秘复苏·总部</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span class="logo-icon">诡</span>
+    <span>神秘复苏·总部</span>
+  </div>
+  <button class="nav-toggle">☰</button>
+  <ul class="navbar-nav">
+    <li><a href="index.html">总部</a></li>
+    <li><a href="events.html">事件档案</a></li>
+    <li><a href="roster.html">驭诡者名册</a></li>
+    <li><a href="levels.html">诡异等级</a></li>
+    <li><a href="forum.html">论坛</a></li>
+    <li><a href="chat.html">聊天</a></li>
+    <li><a href="register.html">注册</a></li>
+  </ul>
+</nav>
+
+<div class="main-container">
+
+  <div class="hero">
+    <div class="hero-classified">★ 内部档案 · 限制查阅 ★</div>
+    <h1>驭诡者<span class="accent">名册</span></h1>
+    <p class="hero-subtitle">GHOST CONTROLLER REGISTRY</p>
+  </div>
+
+  <div class="alert-box alert-warn">
+    <strong>注意：</strong>以下信息为部分公开的驭诡者档案。完整档案（含真实姓名、驻地信息）需要A级以上权限。部分信息已脱敏处理。
+  </div>
+
+  <!-- 未登录拦截 -->
+  <div class="card" id="access-denied-section" style="display: none; text-align: center; padding: 48px;">
+    <div style="font-size: 48px; margin-bottom: 16px;">🔒</div>
+    <h2 style="color: var(--accent-red); font-size: 22px; letter-spacing: 3px; margin-bottom: 12px;">访问受限</h2>
+    <p style="color: var(--text-main); font-size: 15px; margin-bottom: 8px;">驭诡者名册仅限已注册驭诡者查阅。</p>
+    <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 28px;">请先注册并登录后查看名册。</p>
+    <a href="register.html" class="btn btn-large">前往注册 / 登录</a>
+  </div>
+
+  <div id="roster-content" style="display: none;">
+
+  <!-- 筛选 -->
+  <div class="card" style="padding: 16px 24px;">
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); letter-spacing: 2px;">筛选状态：</span>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterRoster('all')">全部</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterRoster('active')">在役</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterRoster('kia')">阵亡</button>
+      <button class="btn" style="padding: 6px 16px; font-size: 12px;" onclick="filterRoster('special')">独立厉鬼</button>
+    </div>
+  </div>
+
+  <!-- ==================== 核心驭诡者 ==================== -->
+
+  <div id="roster-list">
+
+    <!-- 杨间 -->
+    <div class="card roster-item" data-status="active">
+      <div class="stamp">绝密</div>
+      <div class="card-header">
+        <span class="file-id">RC-001</span>
+        <h2>杨间</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-001</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">作战指挥部·特别行动组</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-red);">S级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">鬼眼（核心）、无头鬼影、许愿鬼、鬼梦、鬼湖、鬼剪刀</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">███次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">██只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">多鬼拼图型驭诡者。鬼眼（本命核心）可注视目标触发死亡，十层递进鬼域从空间瞬移到规则级压制；无头鬼影释放漆黑鬼手进行近战压制封印；许愿鬼因果级许愿造物；鬼梦入侵梦境梦中击杀；鬼湖大范围水域封印复活；鬼剪刀以姓名照片锁定目标因果斩首</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">多鬼拼图导致厉鬼复苏风险极高，每次使用不同鬼域均承受不同代价（视力损伤、精神侵蚀、肉身重置等），鬼化进程持续加速</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：总部最强驭诡者。鬼眼十层鬼域从空间操控到时间静止到自身重启到终极规则压制，几乎涵盖所有灵异类型。多次在必死局面中依靠鬼域重启和许愿鬼逆转生死，被称为"不可能死的人"。驾驭六只厉鬼，拼图之复杂前所未有，鬼化风险也远超常人。其能力上限至今未知。</p>
+    </div>
+
+    <!-- 童倩 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-002</span>
+        <h2>童倩</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-002</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">作战指挥部·特别行动组</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">哭脸鬼、笑脸鬼（双生鬼脸）</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">98次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">11只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">笑脸笑声杀人，哭脸哭声杀人，双生鬼脸可切换"死机"状态——死机时免疫一切厉鬼攻击，代价是无法开启鬼域。意识可寄宿于鬼脸之中，肉身被毁后依旧存活</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">死机状态虽可免疫攻击但无法行动，频繁切换鬼脸会导致精神分裂风险</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：杨间队伍核心成员。双生鬼脸的攻击方式直接且致命，死机状态使其成为极少数能在S级厉鬼面前存活的驭诡者。肉身可毁意识不灭的特性赋予了她极高的生存能力。性格坚韧，经历过多次生死考验。</p>
+    </div>
+
+    <!-- 叶真 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-003</span>
+        <h2>叶真</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-003</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">情报分析部</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-red);">S级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">替死鬼、扭曲长剑鬼</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">142次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">18只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">替死鬼可将一切伤害与死亡转移至他人身上，规避致命伤害；扭曲长剑为锋利灵异长剑，可斩碎灵异本身。依靠地盘规则掌控城市灵异秩序，运营驭诡者论坛互通情报</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">替死鬼需以他人生命为代价，扭曲长剑使用后精神剧烈消耗</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：灵异论坛创始人。替死鬼赋予其极强的生存能力，扭曲长剑可斩碎灵异本身，是罕见的可直接破坏厉鬼本质的攻击手段。依靠地盘规则掌控城市灵异秩序，是地下驭鬼者网络的建立者。智慧型驭鬼者，擅长布局博弈。</p>
+    </div>
+
+    <!-- 王察灵 -->
+    <div class="card roster-item" data-status="active">
+      <div class="stamp">绝密</div>
+      <div class="card-header">
+        <span class="file-id">RC-004</span>
+        <h2>王察灵</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-004</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·队长（老牌）</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-red);">S级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">爷爷厉鬼、奶奶厉鬼、父亲厉鬼、母亲厉鬼、饿死鬼</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">312次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">41只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">爷爷厉鬼为民国顶尖驭鬼者，拥有高阶大型鬼域、重启能力、强力压制；奶奶厉鬼规则级辅助压制；父亲、母亲厉鬼为高阶战斗厉鬼；额外掌控饿死鬼——可吞噬一切灵异，吞噬厉鬼后获得对方能力，无限成长</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-amber);">本体是普通人，靠血脉驱使厉鬼，不存在鬼化侵蚀风险；短板是肉身脆弱，很少上前线肉搏</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：总部最强老牌队长。王家三代传承，以血脉驱使五只厉鬼。最大优势是本体为普通人——不存在厉鬼复苏侵蚀风险，这是所有驭诡者中最特殊的存在。饿死鬼的吞噬成长性使其拥有几乎无限的潜力。短板是肉身脆弱，一旦本体被杀，所有厉鬼将失控。</p>
+    </div>
+
+    <!-- 李乐平 -->
+    <div class="card roster-item" data-status="active">
+      <div class="stamp">绝密</div>
+      <div class="card-header">
+        <span class="file-id">RC-005</span>
+        <h2>李乐平</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-005</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·队长（代号：夜游神）</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-red);">S级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">遗忘鬼（核心）、梦游鬼、找人鬼、鬼烟</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">178次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">23只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">遗忘鬼为概念级能力——所有人都会忘记你的存在，可抹除记忆、抹除厉鬼杀人规则、忘掉自身伤痛死亡诅咒寿命损耗；梦游鬼夜间大幅强化身体素质与灵异抗性；找人鬼远距离定位所有目标；鬼烟黑色灵异烟雾禁锢灼烧敌人</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-amber);">特性导致全世界几乎没人能长久记住他的样貌信息，孤独是最大代价</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：一次性驾驭四只厉鬼，生存能力天花板。遗忘鬼近乎无解的保命能力使其成为最难被杀死的驭诡者。梦游鬼夜间无敌。但因为遗忘鬼的特性，几乎没有人能长久记住他——他活在永恒的孤独中。是总部最可靠的队长之一。</p>
+    </div>
+
+    <!-- 柳三 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-006</span>
+        <h2>柳三</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-006</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·队长</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">纸人鬼、体内封存古尸灵异（后期窃取预知能力）</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">134次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">19只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">制造海量纸人分身，分身拥有战斗力；纸人可充当替命傀儡；后期窃取预知能力，可看见1分钟后的未来。极难被彻底杀死，分身源源不断</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">古尸灵异与纸人鬼存在冲突，体内灵异不稳定，身体持续受到侵蚀</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：总部队长，以"难杀"著称。纸人分身配合替命傀儡几乎不死不灭，后期获得1分钟预知能力后更难被杀死。体内封存古尸灵异是双刃剑——提供强大战力但也在持续侵蚀身体。</p>
+    </div>
+
+    <!-- 冯全 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-007</span>
+        <h2>冯全</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-007</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·队长</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">坟土鬼、鬼雾鬼</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">121次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">15只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">坟土鬼操控坟墓泥土掩埋封印厉鬼；鬼雾鬼释放大范围迷雾领域迷惑视线侵蚀肉身。两只厉鬼配合使用可先以鬼雾削弱目标再以坟土封印</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">两只厉鬼互相冲突侵蚀，鬼化风险极高，身体持续恶化</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：总部队长，双鬼驭诡者。坟土与鬼雾配合形成封印-削弱组合，战术价值极高。但两只厉鬼互相冲突侵蚀是致命隐患——使用越多，鬼化越快。是在刀尖上行走的驭诡者。</p>
+    </div>
+
+    <!-- 严力 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-008</span>
+        <h2>严力</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-008</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">收容管理部</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">鬼血压</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">103次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">13只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">释放灵异血液大范围压制所有厉鬼。死后血液凝聚为大型血池，可永久压制整片区域的灵异</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">压制越强自身鬼化越快，以命换力</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：以命换力的悲壮型驭诡者。鬼血压的压制能力极强，可大范围压制所有厉鬼。最可怕的是其死后价值——血液凝聚的血池可永久压制整片区域。每次全力使用都在加速自己的死亡。</p>
+    </div>
+
+    <!-- 何银儿 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-009</span>
+        <h2>何银儿</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-009</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">收容管理部·特殊组</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">招魂类厉鬼</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">87次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">10只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">依靠灵位、死者遗物召唤亡魂厉鬼；操控太平古镇死去之人的鬼魂作战，精通招魂秘术。可召唤并驱使大量亡魂形成军团</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">频繁招魂会吸引更多游魂，存在被亡魂反噬的风险</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：太平古镇传人。招魂秘术是极为罕见的灵异类型——不直接攻击，而是通过召唤亡魂作战。古镇积累的大量亡魂是其最大资本。在团队作战中可提供强大的火力支援。</p>
+    </div>
+
+    <!-- 何月莲 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-010</span>
+        <h2>何月莲</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-010</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">收容管理部</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">鬼画</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">76次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">8只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">杀人规则为"回忆画作就会被杀死"；拥有独立画中世界，可将一切厉鬼与活人拉入画内永久囚禁；鬼域可不断扩张成长</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">鬼画杀人规则同样威胁驭鬼者自身，一旦回忆画作内容即触发死亡</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：鬼画的画中世界是极为强大的封印手段——可永久囚禁一切拉入画中的目标。鬼域可不断成长，上限未知。但杀人规则极为危险，自身也不能回忆画作内容，需要极高的精神控制力。</p>
+    </div>
+
+    <!-- 张羡光 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-011</span>
+        <h2>张羡光</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-011</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·十二队长</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">鬼邮局、尸油灯分身、灵异大刀</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">156次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">20只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">鬼邮局管理者，掌控尸油灯分身可制造多个灵异分身；灵异大刀可劈开空间裂痕，直接撕裂现实与灵异维度的界限。桃花源计划负责人</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">尸油灯分身与本体存在精神连接，分身被毁会对本体造成冲击</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：鬼邮局管理者，十二队长之一。灵异大刀可劈开空间裂痕，极为罕见的空间攻击型能力。桃花源计划负责人，该计划详情属于最高机密。尸油灯分身使其可以同时出现在多个地点执行任务。</p>
+    </div>
+
+    <!-- 孙瑞 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-012</span>
+        <h2>孙瑞</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-012</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·十二队长</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">地狱公寓</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">98次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">12只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">掌控地狱公寓——一座独立的灵异建筑，内部空间可无限延伸，可将目标拉入其中永久困禁。负责新人驭鬼者培训</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">需长期驻守地狱公寓，精神持续承受公寓内诡异气息的侵蚀</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：十二队长之一，负责新人驭鬼者培训。地狱公寓是极为特殊的建筑型灵异——内部空间无限延伸，可困禁一切。新人培训在地狱公寓中进行，通过模拟灵异场景训练新人的应对能力。</p>
+    </div>
+
+    <!-- 熊文文 -->
+    <div class="card roster-item" data-status="active">
+      <div class="card-header">
+        <span class="file-id">RC-013</span>
+        <h2>熊文文</h2>
+        <span class="file-tag tag-active">在役</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-013</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-label">情报分析部</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: #6688cc;">B级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">预知鬼</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">52次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">4只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">可预知10分钟左右的未来，在战斗中拥有提前规避危险的能力</span></div>
+          <div class="doc-line"><span class="doc-label">使用代价：</span><span class="doc-value" style="color: var(--accent-red);">预知能力被柳三窃取后能力削弱</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：情报分析部的预警型驭诡者。10分钟预知虽不长，但在灵异战斗中足以规避致命危险。其预知能力曾被柳三窃取，后部分恢复。非战斗型驭诡者，在团队中担任预警与情报角色。</p>
+    </div>
+
+    <!-- 李军（鬼火） -->
+    <div class="card roster-item" data-status="kia">
+      <div class="stamp">阵亡</div>
+      <div class="card-header">
+        <span class="file-id">RC-014</span>
+        <h2>李军</h2>
+        <span class="file-tag tag-classified">阵亡</span>
+      </div>
+      <div class="grid-2">
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">驭诡编号：</span><span class="doc-value">GC-014</span></div>
+          <div class="doc-line"><span class="doc-label">所属部门：</span><span class="doc-value">总部·十二队长</span></div>
+          <div class="doc-line"><span class="doc-label">驭诡等级：</span><span class="doc-value" style="color: #6688cc;">B级驭诡者</span></div>
+          <div class="doc-line"><span class="doc-label">驾驭厉鬼：</span><span class="doc-value">鬼火（碧绿色）</span></div>
+        </div>
+        <div class="doc-style">
+          <div class="doc-line"><span class="doc-label">执行任务：</span><span class="doc-value">231次</span></div>
+          <div class="doc-line"><span class="doc-label">收容厉鬼：</span><span class="doc-value">25只</span></div>
+          <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">释放碧绿色鬼火灼烧、困住、压制厉鬼。常驻总部老牌战力，经验丰富</span></div>
+          <div class="doc-line"><span class="doc-label">阵亡原因：</span><span class="doc-value" style="color: var(--accent-red);">在一次高等级事件中阵亡</span></div>
+        </div>
+      </div>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：十二队长之一，常驻总部的老牌战力。鬼火能力稳定可靠，在多次事件中发挥关键作用。执行任务次数在十二队长中名列前茅。其阵亡是总部的重大损失。向李军队长致敬。</p>
+    </div>
+
+  </div>
+
+  <!-- ==================== 独立厉鬼档案 ==================== -->
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 20px; color: var(--accent-red); letter-spacing: 3px; margin-bottom: 20px; border-bottom: 1px solid var(--border-red); padding-bottom: 12px;">
+      ⚠ 知名独立厉鬼档案
+    </h2>
+  </div>
+
+  <div class="alert-box">
+    <strong>注意：</strong>以下厉鬼均为无固定驭鬼者或以灵异物品形式存在的高危诡异，接触需Ω级权限。
+  </div>
+
+  <!-- 鬼差 -->
+  <div class="card roster-item" data-status="special">
+    <div class="stamp">毁灭级</div>
+    <div class="card-header">
+      <span class="file-id">GH-001</span>
+      <span class="level-badge level-s" style="width:32px;height:32px;font-size:14px;">S</span>
+      <h2>鬼差</h2>
+      <span class="file-tag tag-active">未收容</span>
+    </div>
+    <div class="grid-2">
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">档案编号：</span><span class="doc-value">GH-001</span></div>
+        <div class="doc-line"><span class="doc-label">危险等级：</span><span class="doc-value" style="color: var(--accent-red);">S级·毁灭级</span></div>
+        <div class="doc-line"><span class="doc-label">驭鬼者：</span><span class="doc-value" style="color: var(--accent-red);">无固定驭鬼者</span></div>
+      </div>
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">杀人规则：</span><span class="doc-value">鬼域内人数低于阈值就会触发落单必死</span></div>
+        <div class="doc-line"><span class="doc-label">特殊能力：</span><span class="doc-value">鬼棺隔绝空间；吞噬厉鬼增加压制名额，可无条件压制复数厉鬼；死亡后自动重启复活</span></div>
+      </div>
+    </div>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：全书最难封印的厉鬼之一。无法被彻底关押，死亡后自动重启复活。后期被困于鬼话世界，暂无固定驭鬼者。任何接触鬼差的行动均需总部最高指挥中心亲自授权。</p>
+  </div>
+
+  <!-- 人皮纸 -->
+  <div class="card roster-item" data-status="special">
+    <div class="card-header">
+      <span class="file-id">GH-002</span>
+      <span class="level-badge level-a" style="width:32px;height:32px;font-size:14px;">A</span>
+      <h2>人皮纸（羊皮纸）</h2>
+      <span class="file-tag tag-secret">灵异物品</span>
+    </div>
+    <div class="grid-2">
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">档案编号：</span><span class="doc-value">GH-002</span></div>
+        <div class="doc-line"><span class="doc-label">危险等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级·情报型</span></div>
+        <div class="doc-line"><span class="doc-label">当前持有者：</span><span class="doc-value" style="color: var(--accent-red);">不断更换</span></div>
+      </div>
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">攻击性：</span><span class="doc-value">无</span></div>
+        <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">预知未来、给出破局提示。全书最强情报灵异道具</span></div>
+      </div>
+    </div>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：无攻击性但价值极高的灵异道具。持有者可获得关于未来的情报与破局提示，但持有者会不断更换——原因不明。是总部在重大事件中获取关键情报的重要途径之一。</p>
+  </div>
+
+  <!-- 船长 -->
+  <div class="card roster-item" data-status="special">
+    <div class="card-header">
+      <span class="file-id">GH-003</span>
+      <span class="level-badge level-s" style="width:32px;height:32px;font-size:14px;">S</span>
+      <h2>船长（幽灵船）</h2>
+      <span class="file-tag tag-classified">概念级</span>
+    </div>
+    <div class="grid-2">
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">档案编号：</span><span class="doc-value">GH-003</span></div>
+        <div class="doc-line"><span class="doc-label">危险等级：</span><span class="doc-value" style="color: var(--accent-red);">S级·概念级</span></div>
+        <div class="doc-line"><span class="doc-label">驭鬼者：</span><span class="doc-value" style="color: var(--accent-red);">无</span></div>
+      </div>
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">类型：</span><span class="doc-value">概念级厉鬼 · 大海灵异规则</span></div>
+        <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">船只穿梭现实与灵异海域，搭载一众水手厉鬼</span></div>
+      </div>
+    </div>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：概念级厉鬼，掌握大海的灵异规则。幽灵船可穿梭于现实与灵异海域之间，船上搭载大量水手厉鬼。无法被常规手段收容，仅能在其不出现时规避。所有海上灵异事件均需考虑船长的存在。</p>
+  </div>
+
+  <!-- 鬼钟 -->
+  <div class="card roster-item" data-status="special">
+    <div class="card-header">
+      <span class="file-id">GH-004</span>
+      <span class="level-badge level-a" style="width:32px;height:32px;font-size:14px;">A</span>
+      <h2>鬼钟（王家摆钟）</h2>
+      <span class="file-tag tag-secret">家族传承</span>
+    </div>
+    <div class="grid-2">
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">档案编号：</span><span class="doc-value">GH-004</span></div>
+        <div class="doc-line"><span class="doc-label">危险等级：</span><span class="doc-value" style="color: var(--accent-amber);">A级·时间型</span></div>
+        <div class="doc-line"><span class="doc-label">持有者：</span><span class="doc-value">王察灵（王家传承）</span></div>
+      </div>
+      <div class="doc-style">
+        <div class="doc-line"><span class="doc-label">类型：</span><span class="doc-value">时间类灵异</span></div>
+        <div class="doc-line"><span class="doc-label">能力描述：</span><span class="doc-value">操控局部时间流速、时间回溯。王家家族传承灵异</span></div>
+      </div>
+    </div>
+    <p style="margin-top: 12px; font-size: 13px; color: var(--text-dim);">备注：王家摆钟是王察灵家族传承的核心灵异之一。时间类灵异极为罕见——可操控局部时间流速、进行时间回溯。与王察灵爷爷厉鬼的重启能力配合使用时，时间操控能力达到极为恐怖的水平。</p>
+  </div>
+
+  <div style="text-align: center; margin: 32px 0; font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">
+    显示 14 名驭诡者 + 4 只独立厉鬼 / 共 1,247 名驭诡者 &nbsp;|&nbsp; 完整名册需要A级以上权限
+  </div>
+
+  <div style="text-align: center; margin: 40px 0;">
+    <a href="register.html" class="btn btn-large">加入名册</a>
+  </div>
+
+  </div><!-- /roster-content -->
+
+</div>
+
+<footer class="footer">
+  <p>诡异事务总部 · 内部系统 v3.14.159</p>
+  <p>© 2026 SUPERNATURAL CONTAINMENT HEADQUARTERS. ALL RIGHTS RESERVED.</p>
+  <p class="footer-warning">★ 本系统受《诡异事务管理法》保护 · 未经授权访问将被追究法律责任 ★</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/api.js"></script>
+<script>
+// 登录检查（API版）
+API.getCurrentUser().then(function(data) {
+  if (!data.user) {
+    document.getElementById('access-denied-section').style.display = '';
+    document.getElementById('roster-content').style.display = 'none';
+  } else {
+    document.getElementById('access-denied-section').style.display = 'none';
+    document.getElementById('roster-content').style.display = '';
+  }
+});
+
+function filterRoster(status) {
+  document.querySelectorAll('.roster-item').forEach(function(item) {
+    if (status === 'all' || item.dataset.status === status) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

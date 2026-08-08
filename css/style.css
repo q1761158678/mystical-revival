@@ -1,0 +1,687 @@
+/* ===========================
+   神秘复苏·总部 - 暗黑机密风
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg-dark: #0a0a0a;
+  --bg-panel: #141414;
+  --bg-card: #1a1a1a;
+  --text-main: #c0c0c0;
+  --text-dim: #666;
+  --text-bright: #e0e0e0;
+  --accent-red: #cc0000;
+  --accent-red-dim: #5a0000;
+  --accent-red-glow: rgba(204, 0, 0, 0.3);
+  --accent-amber: #b8860b;
+  --border-dim: #2a2a2a;
+  --border-red: #4a1010;
+  --font-serif: 'Noto Serif SC', serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --shadow-red: 0 0 20px rgba(204, 0, 0, 0.15);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-serif);
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 背景扫描线效果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.015) 2px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 背景暗角 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ===================== 导航栏 ===================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid var(--border-red);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.8);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--accent-red);
+  text-shadow: 0 0 10px var(--accent-red-glow);
+  letter-spacing: 2px;
+  margin-right: auto;
+}
+
+.navbar-brand .logo-icon {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--accent-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--font-mono);
+  color: var(--accent-red);
+  background: rgba(204, 0, 0, 0.08);
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+}
+
+.navbar-nav a {
+  display: block;
+  padding: 8px 16px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 14px;
+  font-family: var(--font-serif);
+  letter-spacing: 1px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a.active {
+  color: var(--accent-red);
+  border-bottom-color: var(--accent-red);
+  text-shadow: 0 0 8px var(--accent-red-glow);
+}
+
+/* 移动端汉堡菜单 */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--accent-red);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* ===================== 主容器 ===================== */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
+}
+
+/* ===================== Hero ===================== */
+.hero {
+  text-align: center;
+  padding: 40px 0 60px;
+  position: relative;
+}
+
+.hero-classified {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-red);
+  border: 1px solid var(--accent-red-dim);
+  padding: 4px 16px;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+  animation: flicker 4s infinite;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--text-bright);
+  letter-spacing: 8px;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  margin-bottom: 12px;
+}
+
+.hero h1 .accent {
+  color: var(--accent-red);
+  text-shadow: 0 0 20px var(--accent-red-glow);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+/* ===================== 卡片 ===================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 4px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--border-red);
+  box-shadow: var(--shadow-red), var(--shadow-card);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.card-header .file-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-red);
+  letter-spacing: 1px;
+}
+
+.card-header .file-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border: 1px solid;
+  letter-spacing: 1px;
+}
+
+.tag-classified { color: var(--accent-red); border-color: var(--accent-red-dim); }
+.tag-secret { color: var(--accent-amber); border-color: #5a4a10; }
+.tag-resolved { color: #2a6a2a; border-color: #2a4a2a; }
+.tag-active { color: var(--accent-red); border-color: var(--accent-red-dim); animation: blink 2s infinite; }
+
+.card h2 {
+  font-size: 22px;
+  color: var(--text-bright);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.card h3 {
+  font-size: 16px;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.card p {
+  color: var(--text-main);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ===================== 网格布局 ===================== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ===================== 组织架构 ===================== */
+.org-tree {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.org-node {
+  display: inline-block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-red);
+  padding: 12px 24px;
+  margin: 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--text-bright);
+  position: relative;
+}
+
+.org-node.top {
+  border-color: var(--accent-red);
+  background: rgba(204, 0, 0, 0.08);
+  font-weight: 700;
+  color: var(--accent-red);
+}
+
+.org-connector {
+  width: 1px;
+  height: 20px;
+  background: var(--border-red);
+  margin: 0 auto;
+}
+
+/* ===================== 等级展示 ===================== */
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.level-s { background: rgba(204, 0, 0, 0.15); border: 2px solid var(--accent-red); color: var(--accent-red); }
+.level-a { background: rgba(184, 134, 11, 0.15); border: 2px solid var(--accent-amber); color: var(--accent-amber); }
+.level-b { background: rgba(100, 100, 200, 0.1); border: 2px solid #4466aa; color: #6688cc; }
+.level-c { background: rgba(50, 150, 50, 0.1); border: 2px solid #2a6a2a; color: #4a8a4a; }
+.level-d { background: rgba(100, 100, 100, 0.1); border: 2px solid #555; color: #888; }
+
+/* ===================== 档案文件样式 ===================== */
+.doc-style {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 2;
+}
+
+.doc-style .doc-line {
+  border-bottom: 1px dashed var(--border-dim);
+  padding: 4px 0;
+}
+
+.doc-style .doc-label {
+  color: var(--text-dim);
+  display: inline-block;
+  width: 100px;
+}
+
+.doc-style .doc-value {
+  color: var(--text-bright);
+}
+
+/* ===================== 机密印章 ===================== */
+.stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 3px solid var(--accent-red);
+  color: var(--accent-red);
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 16px;
+  padding: 6px 18px;
+  transform: rotate(-12deg);
+  opacity: 0.5;
+  letter-spacing: 4px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.stamp-approved { border-color: #2a6a2a; color: #2a6a2a; }
+
+/* ===================== 按钮 ===================== */
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border: 1px solid var(--accent-red-dim);
+  background: rgba(204, 0, 0, 0.08);
+  color: var(--accent-red);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.btn:hover {
+  background: var(--accent-red);
+  color: #fff;
+  box-shadow: 0 0 20px var(--accent-red-glow);
+  border-color: var(--accent-red);
+}
+
+.btn-large { padding: 16px 48px; font-size: 18px; }
+.btn-full { display: block; width: 100%; }
+
+/* ===================== 表单 ===================== */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-dim);
+  color: var(--text-bright);
+  padding: 12px 16px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 10px var(--accent-red-glow);
+}
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* ===================== 论坛 ===================== */
+.forum-post {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s;
+}
+
+.forum-post:hover { border-color: var(--border-red); }
+
+.forum-post .post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.forum-post .post-author {
+  color: var(--accent-red);
+}
+
+.forum-post .post-title {
+  font-size: 18px;
+  color: var(--text-bright);
+  font-weight: 700;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.forum-post .post-content {
+  color: var(--text-main);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.forum-reply {
+  margin-left: 24px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.3);
+  border-left: 2px solid var(--border-red);
+  margin-top: 8px;
+}
+
+/* ===================== 证书 ===================== */
+.certificate {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 2px solid var(--accent-red-dim);
+  border-radius: 8px;
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 40px rgba(204, 0, 0, 0.1);
+  animation: certAppear 0.6s ease-out;
+}
+
+.certificate::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px solid rgba(204, 0, 0, 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.certificate .cert-header {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.certificate .cert-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent-red);
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 20px var(--accent-red-glow);
+}
+
+.certificate .cert-name {
+  font-size: 24px;
+  color: var(--text-bright);
+  font-weight: 700;
+  margin: 20px 0;
+  padding: 8px 0;
+  border-top: 1px solid var(--border-dim);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.certificate .cert-ghost {
+  font-size: 20px;
+  color: var(--accent-amber);
+  margin: 12px 0;
+}
+
+.certificate .cert-id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 24px;
+}
+
+/* ===================== 表格 ===================== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table th {
+  background: rgba(204, 0, 0, 0.08);
+  border-bottom: 2px solid var(--border-red);
+  padding: 10px 12px;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-red);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  border-bottom: 1px solid var(--border-dim);
+  padding: 10px 12px;
+  color: var(--text-main);
+}
+
+.data-table tr:hover td { background: rgba(204, 0, 0, 0.04); }
+
+/* ===================== 警告框 ===================== */
+.alert-box {
+  border-left: 4px solid var(--accent-red);
+  background: rgba(204, 0, 0, 0.05);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.alert-box strong { color: var(--accent-red); }
+
+.alert-warn {
+  border-left-color: var(--accent-amber);
+  background: rgba(184, 134, 11, 0.05);
+}
+
+.alert-warn strong { color: var(--accent-amber); }
+
+/* ===================== 页脚 ===================== */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid var(--border-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-top: 40px;
+}
+
+.footer .footer-warning {
+  color: var(--accent-red-dim);
+  margin-top: 8px;
+}
+
+/* ===================== 动画 ===================== */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 1; }
+  49% { opacity: 0.3; }
+  50% { opacity: 1; }
+  51% { opacity: 0.4; }
+  52% { opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes certAppear {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeInUp 0.6s ease-out; }
+
+/* ===================== 响应式 ===================== */
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .navbar-nav {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-red);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .navbar-nav.active { display: flex; }
+  .navbar-nav a { padding: 12px 16px; }
+
+  .hero h1 { font-size: 28px; letter-spacing: 4px; }
+  .hero-classified { font-size: 10px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .main-container { padding: 80px 12px 40px; }
+
+  /* 表格横向滚动 */
+  .data-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table { font-size: 12px; min-width: 400px; }
+  .card { padding: 16px; }
+
+  /* 证书自适应 */
+  .certificate { padding: 24px 16px; }
+  .certificate .cert-title { font-size: 20px; letter-spacing: 4px; }
+  .certificate .cert-name { font-size: 18px; }
+
+  /* 文档标签宽度缩小 */
+  .doc-style .doc-label { width: 80px; font-size: 12px; }
+  .doc-style .doc-value { font-size: 12px; }
+
+  /* 事件表单网格变单列 */
+  #event-form-section .grid-2 { grid-template-columns: 1fr; }
+
+  /* 管理后台标签按钮换行 */
+  .chat-layout { flex-direction: column; height: auto; min-height: 400px; }
+  .chat-sidebar { width: 100%; max-height: 180px; }
+  .chat-main { min-height: 350px; }
+
+  /* 按钮 */
+  .btn { padding: 10px 20px; font-size: 13px; }
+  .btn-large { padding: 12px 32px; font-size: 15px; }
+
+  /* stamp 定位 */
+  .stamp { font-size: 12px; padding: 4px 12px; top: 8px; right: 8px; }
+
+  /* org-node 缩小 */
+  .org-node { padding: 8px 12px; font-size: 12px; }
+
+  /* navbar brand 缩小 */
+  .navbar-brand { font-size: 16px; }
+  .navbar-brand span:last-child { display: none; }
+  .navbar { padding: 0 12px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 22px; letter-spacing: 2px; }
+  .hero-subtitle { font-size: 10px; letter-spacing: 3px; }
+  .card h2 { font-size: 16px; }
+  .level-badge { width: 36px !important; height: 36px !important; font-size: 16px !important; }
+}
